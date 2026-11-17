@@ -196,12 +196,114 @@ static void delete_student(void) {
     printf("Record deleted.\n");
 }
 
-/* ---------- stubs (to be implemented next) ---------- */
+/* ---------- CGPA ---------- */
 
-static void calculate_cgpa(void)        { printf("[TODO] Calculate CGPA - not implemented yet.\n"); }
-static void average_cgpa_by_year(void)  { printf("[TODO] Average CGPA by year - not implemented yet.\n"); }
-static void display_sorted_by_sap(void) { printf("[TODO] Sort by SAP ID - not implemented yet.\n"); }
-static void display_sorted_by_name(void){ printf("[TODO] Sort by Name - not implemented yet.\n"); }
+/* CGPA = average of the available SGPAs (entries that are not NA_SGPA). */
+static float compute_cgpa(const Student *s, int *count_out) {
+    float sum = 0.0f;
+    int n = 0;
+    for (int i = 0; i < NUM_SEMESTERS; i++) {
+        if (s->sgpa[i] >= 0) {
+            sum += s->sgpa[i];
+            n++;
+        }
+    }
+    if (count_out) *count_out = n;
+    return (n > 0) ? sum / n : 0.0f;
+}
+
+static void calculate_cgpa(void) {
+    if (student_count == 0) {
+        printf("No student records available.\n");
+        return;
+    }
+    printf("\nCGPA of each student:\n");
+    printf("%-11s %-20s %-4s %-9s %-6s\n", "SAP ID", "Name", "Year", "Sem count", "CGPA");
+    printf("-------------------------------------------------------\n");
+    for (int i = 0; i < student_count; i++) {
+        int n;
+        float cgpa = compute_cgpa(&students[i], &n);
+        printf("%-11lld %-20.20s %-4d %-9d %-6.2f\n",
+               students[i].sap_id, students[i].name, students[i].year, n, cgpa);
+    }
+}
+
+static void average_cgpa_by_year(void) {
+    if (student_count == 0) {
+        printf("No student records available.\n");
+        return;
+    }
+    printf("\nAverage CGPA by year:\n");
+    printf("%-6s %-9s %-12s\n", "Year", "Students", "Average CGPA");
+    printf("------------------------------\n");
+    for (int year = 1; year <= 4; year++) {
+        float total = 0.0f;
+        int n = 0;
+        for (int i = 0; i < student_count; i++) {
+            if (students[i].year == year) {
+                total += compute_cgpa(&students[i], NULL);
+                n++;
+            }
+        }
+        if (n == 0) printf("%-6d %-9d %-12s\n", year, 0, "--");
+        else        printf("%-6d %-9d %-12.2f\n", year, n, total / n);
+    }
+}
+
+/* ---------- sorted displays (bubble sort on a copy) ---------- */
+
+static void print_sorted(const Student *list, int n, const char *title) {
+    printf("\n%s (%d students):\n", title, n);
+    print_table_header();
+    for (int i = 0; i < n; i++)
+        print_table_row(&list[i]);
+}
+
+static void display_sorted_by_sap(void) {
+    if (student_count == 0) {
+        printf("No student records available.\n");
+        return;
+    }
+    Student copy[MAX_STUDENTS];                       /* original stays intact */
+    for (int i = 0; i < student_count; i++) copy[i] = students[i];
+
+    for (int pass = 0; pass < student_count - 1; pass++) {
+        int swapped = 0;
+        for (int j = 0; j < student_count - 1 - pass; j++) {
+            if (copy[j].sap_id > copy[j + 1].sap_id) {
+                Student tmp = copy[j];
+                copy[j] = copy[j + 1];
+                copy[j + 1] = tmp;
+                swapped = 1;
+            }
+        }
+        if (!swapped) break;                          /* already sorted */
+    }
+    print_sorted(copy, student_count, "Students in increasing order of SAP ID");
+}
+
+static void display_sorted_by_name(void) {
+    if (student_count == 0) {
+        printf("No student records available.\n");
+        return;
+    }
+    Student copy[MAX_STUDENTS];                       /* original stays intact */
+    for (int i = 0; i < student_count; i++) copy[i] = students[i];
+
+    for (int pass = 0; pass < student_count - 1; pass++) {
+        int swapped = 0;
+        for (int j = 0; j < student_count - 1 - pass; j++) {
+            if (strcmp(copy[j].name, copy[j + 1].name) > 0) {
+                Student tmp = copy[j];
+                copy[j] = copy[j + 1];
+                copy[j + 1] = tmp;
+                swapped = 1;
+            }
+        }
+        if (!swapped) break;
+    }
+    print_sorted(copy, student_count, "Students in increasing order of Name");
+}
 
 /* ---------- menu ---------- */
 
@@ -219,12 +321,10 @@ static void print_menu(void) {
     printf("=============================================\n");
 }
 
-int main(void)
-{
+int main(void) {
     preload_students();
 
-    for (;;)
-    {
+    for (;;) {
         print_menu();
         int choice = (int)read_long("Enter choice: ", 0, 8);
         switch (choice) {
