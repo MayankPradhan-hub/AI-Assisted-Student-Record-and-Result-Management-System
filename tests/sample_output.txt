@@ -1,0 +1,316 @@
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Roll  Name         Phone       Year Sem 
+500101001  1     Aarav        9876500001  4    8   
+500102002  12    Priya        9876500002  3    6   
+500103003  23    Rohan        9876500003  2    4   
+500104004  34    Ananya       9876500004  1    2   
+500105005  45    Kabir        9876500005  1    1   
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID to search
+SAP ID: 500103003
+Roll No: 23
+Name: Rohan
+Phone: 9876500003
+Email: rohan@example.com
+Year: 2 | Semester: 4
+SGPA Sem 1: 9.10
+SGPA Sem 2: 9.30
+SGPA Sem 3: 9.00
+SGPA Sem 4: 9.40
+SGPA Sem 5: --
+SGPA Sem 6: --
+SGPA Sem 7: --
+SGPA Sem 8: --
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID to search
+No student found with SAP ID 123456789
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Name         Year CGPA  
+500101001  Aarav        4    8.86  
+500102002  Priya        3    8.08  
+500103003  Rohan        2    9.20  
+500104004  Ananya       1    7.20  
+500105005  Kabir        1    8.00  
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Year 1: 2 student(s) | Average CGPA: 7.60
+Year 2: 1 student(s) | Average CGPA: 9.20
+Year 3: 1 student(s) | Average CGPA: 8.08
+Year 4: 1 student(s) | Average CGPA: 8.86
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Invalid input. Enter a number from 0 to 9
+Enter SAP ID to delete
+Record deleted
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Roll  Name         Phone       Year Sem 
+500101001  1     Aarav        9876500001  4    8   
+500103003  23    Rohan        9876500003  2    4   
+500104004  34    Ananya       9876500004  1    2   
+500105005  45    Kabir        9876500005  1    1   
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID
+SAP ID already exists
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID
+Enter roll no
+Enter name (one word)
+Enter phone no
+Enter email id
+Enter year (1-4)
+Enter current semester (1 or 2)
+Enter SGPA of semester 1 (0-10)
+Enter SGPA of semester 2 (0-10)
+Student added
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Roll  Name         Phone       Year Sem 
+500101001  1     Aarav        9876500001  4    8   
+500103003  23    Rohan        9876500003  2    4   
+500104004  34    Ananya       9876500004  1    2   
+500105005  45    Kabir        9876500005  1    1   
+500100100  56    Zara         9876500006  1    2   
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Roll  Name         Phone       Year Sem 
+500100100  56    Zara         9876500006  1    2   
+500101001  1     Aarav        9876500001  4    8   
+500103003  23    Rohan        9876500003  2    4   
+500104004  34    Ananya       9876500004  1    2   
+500105005  45    Kabir        9876500005  1    1   
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+SAP ID     Roll  Name         Phone       Year Sem 
+500101001  1     Aarav        9876500001  4    8   
+500104004  34    Ananya       9876500004  1    2   
+500105005  45    Kabir        9876500005  1    1   
+500103003  23    Rohan        9876500003  2    4   
+500100100  56    Zara         9876500006  1    2   
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID for advice
+Name: Zara | CGPA: 4.75
+Category: At Risk
+Advice: Your CGPA is low. Strengthen the basics and meet your teachers for guidance as soon as possible.
+Previous SGPA: 4.50 | Latest SGPA: 5.00
+Trend: Your last semester was better than the one before. Keep following the study plan that worked.
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID for advice
+Name: Aarav | CGPA: 8.86
+Category: Good
+Advice: Solid results. Pick your weakest subjects and give them extra weekly revision time.
+Previous SGPA: 9.30 | Latest SGPA: 9.20
+Trend: Your last semester went down compared to the one before. Find out what went wrong and work on it.
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID for advice
+Name: Ananya | CGPA: 7.20
+Category: Average
+Advice: Your results are average. Revise tough topics regularly and solve more practice problems.
+Previous SGPA: 7.20 | Latest SGPA: 7.20
+Trend: Your last two semesters are the same. Aim a little higher in the next semester.
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Enter SAP ID for advice
+Name: Kabir | CGPA: 8.00
+Category: Good
+Advice: Solid results. Pick your weakest subjects and give them extra weekly revision time.
+Trend: Only one semester available, so there is nothing to compare yet.
+
+===== STUDENT RECORD SYSTEM =====
+1. Add student
+2. Search student by SAP ID
+3. CGPA of each student
+4. Average CGPA of each year
+5. Display all students
+6. Delete student
+7. Display sorted by SAP ID
+8. Display sorted by Name
+9. Academic advice
+0. Exit
+Enter choice
+Goodbye

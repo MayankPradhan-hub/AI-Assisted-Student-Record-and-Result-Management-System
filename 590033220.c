@@ -1,5 +1,7 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 
 struct student
 {
@@ -12,6 +14,91 @@ struct student
     int sem;
     float sgpa[8];
 };
+
+void clearLine()
+{
+    int c;
+    c=getchar();
+    while(c!='\n'&&c!=EOF)
+    {
+        c=getchar();
+    }
+}
+
+int readInt(int min,int max)
+{
+    long long x;
+    int r;
+    while(1)
+    {
+        r=scanf("%lld",&x);
+        if(r==EOF)
+        {
+            printf("\nInput ended. Exiting\n");
+            exit(0);
+        }
+        clearLine();
+        if(r==1&&x>=min&&x<=max)
+        {
+            return (int)x;
+        }
+        printf("Invalid input. Enter a number from %d to %d\n",min,max);
+    }
+}
+
+float readFloat(float min,float max)
+{
+    float x;
+    int r;
+    while(1)
+    {
+        r=scanf("%f",&x);
+        if(r==EOF)
+        {
+            printf("\nInput ended. Exiting\n");
+            exit(0);
+        }
+        clearLine();
+        if(r==1&&x>=min&&x<=max)
+        {
+            return x;
+        }
+        printf("Invalid input. Enter a number from %.0f to %.0f\n",min,max);
+    }
+}
+
+void readWord(char *dest,int size)
+{
+    char fmt[16];
+    sprintf(fmt,"%%%ds",size-1);
+    if(scanf(fmt,dest)!=1)
+    {
+        printf("\nInput ended. Exiting\n");
+        exit(0);
+    }
+    clearLine();
+}
+
+int compareNames(char *a,char *b)
+{
+    char x[30],y[30];
+    int i;
+    i=0;
+    while(*(a+i)!='\0')
+    {
+        x[i]=tolower((unsigned char)*(a+i));
+        i++;
+    }
+    x[i]='\0';
+    i=0;
+    while(*(b+i)!='\0')
+    {
+        y[i]=tolower((unsigned char)*(b+i));
+        i++;
+    }
+    y[i]='\0';
+    return strcmp(x,y);
+}
 
 int findBySap(struct student *s,int n,int sap)
 {
@@ -108,7 +195,7 @@ void addStudent(struct student *s,int *n)
         return;
     }
     printf("Enter SAP ID\n");
-    scanf("%d",&sap);
+    sap=readInt(100000000,999999999);
     if(findBySap(s,*n,sap)!=-1)
     {
         printf("SAP ID already exists\n");
@@ -117,32 +204,23 @@ void addStudent(struct student *s,int *n)
     p=s+*n;
     p->sap=sap;
     printf("Enter roll no\n");
-    scanf("%d",&p->roll);
+    p->roll=readInt(1,99999);
     printf("Enter name (one word)\n");
-    scanf("%29s",p->name);
+    readWord(p->name,30);
     printf("Enter phone no\n");
-    scanf("%14s",p->phone);
+    readWord(p->phone,15);
     printf("Enter email id\n");
-    scanf("%39s",p->email);
-    do
-    {
-        printf("Enter year (1-4)\n");
-        scanf("%d",&p->year);
-    }while(p->year<1||p->year>4);
-    do
-    {
-        printf("Enter current semester (%d or %d)\n",2*p->year-1,2*p->year);
-        scanf("%d",&p->sem);
-    }while(p->sem<2*p->year-1||p->sem>2*p->year);
+    readWord(p->email,40);
+    printf("Enter year (1-4)\n");
+    p->year=readInt(1,4);
+    printf("Enter current semester (%d or %d)\n",2*p->year-1,2*p->year);
+    p->sem=readInt(2*p->year-1,2*p->year);
     for(i=0;i<8;i++)
     {
         if(i<p->sem)
         {
-            do
-            {
-                printf("Enter SGPA of semester %d (0-10)\n",i+1);
-                scanf("%f",&p->sgpa[i]);
-            }while(p->sgpa[i]<0||p->sgpa[i]>10);
+            printf("Enter SGPA of semester %d (0-10)\n",i+1);
+            p->sgpa[i]=readFloat(0,10);
         }
         else
         {
@@ -157,7 +235,7 @@ void searchStudent(struct student *s,int n)
 {
     int sap,i,j;
     printf("Enter SAP ID to search\n");
-    scanf("%d",&sap);
+    sap=readInt(100000000,999999999);
     i=findBySap(s,n,sap);
     if(i==-1)
     {
@@ -244,7 +322,7 @@ void deleteStudent(struct student *s,int *n)
 {
     int sap,i,j;
     printf("Enter SAP ID to delete\n");
-    scanf("%d",&sap);
+    sap=readInt(100000000,999999999);
     i=findBySap(s,*n,sap);
     if(i==-1)
     {
@@ -308,7 +386,7 @@ void sortByName(struct student *s,int n)
     {
         for(j=0;j<n-1-i;j++)
         {
-            if(strcmp((c+j)->name,(c+j+1)->name)>0)
+            if(compareNames((c+j)->name,(c+j+1)->name)>0)
             {
                 temp=*(c+j);
                 *(c+j)=*(c+j+1);
@@ -368,7 +446,7 @@ void adviceMenu(struct student *s,int n)
     int sap,i,last;
     float cgpa;
     printf("Enter SAP ID for advice\n");
-    scanf("%d",&sap);
+    sap=readInt(100000000,999999999);
     i=findBySap(s,n,sap);
     if(i==-1)
     {
@@ -410,10 +488,7 @@ int main()
         printf("9. Academic advice\n");
         printf("0. Exit\n");
         printf("Enter choice\n");
-        if(scanf("%d",&choice)!=1)
-        {
-            return 0;
-        }
+        choice=readInt(0,9);
         switch(choice)
         {
             case 1: addStudent(s,&n); break;
